@@ -1,0 +1,163 @@
+<html>
+<head>
+<title>
+
+	Rock, Paper, Scissors
+</title>
+
+<style>
+
+	.full_game_area{
+		width:800px;
+		height:300px;
+	}
+	.playing_area{
+		width:400px;
+		height:50px;
+		font-size:30pt;
+		text-align:center;
+		
+	}
+	
+	.button_panel{
+		width:400px;
+		height:50px;
+		
+	
+	
+	}
+	
+
+
+</style>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+
+	//global variables
+		var yourChoice;
+		var computerChoice;
+
+	function showChoice()
+	{
+	
+		switch(event.target.id) {
+     case "btnPaper":
+	 
+		yourChoice="Paper";
+        $("#yourArea").html("Paper");
+        break;
+     case "btnRock":
+		yourChoice="Rock"
+        $("#yourArea").html("Rock");
+        break;
+     case "btnScissors":
+		yourChoice="Scissors";
+        $("#yourArea").html("Scissors");
+		break;	
+	} 
+	
+	letComputerChoose();
+	determineWinner();
+	
+	
+	}
+	
+	function determineWinner()
+	{
+		if(yourChoice==computerChoice)
+			alert("Tie");
+		//You Win
+		if(yourChoice=="Rock" && computerChoice=="Scissors"||
+			yourChoice=="Paper" && computerChoice=="Rock" ||
+			yourChoice=="Scissors" & computerChoice=="Paper"
+		
+		)
+			alert("You Win");
+			
+		//Computer Wins
+		if(computerChoice=="Rock" && yourChoice=="Scissors"||
+			computerChoice=="Paper" && yourChoice=="Rock" ||
+			computerChoice=="Scissors" & yourChoice=="Paper"
+		
+		)
+			alert("Computer Wins");
+			
+		
+			
+		
+	
+	
+	}
+	
+	
+	function letComputerChoose()
+	{
+	
+		var x= parseInt(Math.random() * 3);
+		switch (x)
+		{
+			case 0:
+			computerChoice="Rock";
+			$("#ComputerArea").html("Rock");
+			break;
+			
+			case 1:
+			computerChoice="Paper";
+			$("#ComputerArea").html("Paper");
+			break;
+			
+			case 2:
+			
+			computerChoice="Scissors";			
+			$("#ComputerArea").html("Scissors");
+			break;		
+		
+		}
+	
+	}
+
+</script>
+</head>
+<body>
+<table border="1" class="full_game_area">
+	<tr>
+		<td colspan="2">Rock Paper Scissors</td>
+	</tr>
+	<tr>
+		<td>You</td>
+		<td>Computer</td>
+	</tr>
+	<tr>
+		<td><div id="yourArea" class="playing_area"/></td>
+		<td><div id="ComputerArea" class="playing_area"/></td>
+	</tr>
+	<tr>
+		<td>
+			<table border="0" class="button_panel">
+			<tr>
+				<td><button id="btnRock" class="optionButton" >R</button></td>
+				<td><button id="btnPaper" class="optionButton">P</button></td>
+				<td><button id="btnScissors" class="optionButton">S</button></td>
+			</tr>
+			</table>
+		</td>
+		<td>
+			&nbsp;
+		</td>
+	</tr>
+</table>
+
+
+<script>
+
+	$(".optionButton").click(showChoice);
+
+
+
+</script>
+</body>
+</html>
